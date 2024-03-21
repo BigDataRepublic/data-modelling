@@ -136,7 +136,7 @@ VALUES (123, 'John', 'Office B', CURRENT_DATE, NULL);
 
 ---
 
-# Bride table
+# Bridge tables
 - Allows you to handle many-to-many relationships
 - E.g. products that fall in multiple categories
 
@@ -168,4 +168,10 @@ VALUES (123, 'John', 'Office B', CURRENT_DATE, NULL);
 - Data isn't entirely integrated before reporting: no single source of truth
 
 Not needed anymore for storage and computational reasons
+
+---
+
+# Data Vault Modelling
+
+<img src="/Data_Vault_Example.png" alt="Extremely semplified example of Data Vault modelling"/>
 
