@@ -1,7 +1,17 @@
-# Data Modelling
+---
+fonts:
+  sans: Quicksand
+  weights: '300,400,500,600,700'
+  provider: none
+
+background: '/slide_background_red.png'
 
 ---
 
+<h1 style="margin-top: -80px; margin-left: -15px; font-weight:600">Data Modeling Techniques</h1>
+
+
+---
 
 # Why?
 - The design makes it easy to join data together
@@ -171,7 +181,20 @@ Not needed anymore for storage and computational reasons
 
 ---
 
-# Data Vault Modelling
+# Data Vault Modeling
+Invented by Dan Linstedt (1990s) / Inspired by complex networks found in Nature
+
+### Networks Topology:
+- <span style="color:red">_**hubs**_</span> (such as persons or other objects) &#8594; Business Keys
+- <span style="color:green">_**links**_</span> between those objects &#8594; Business Processes / Relationships between business keys
+- <span style="color:yellow">_**information**_</span> that describes the context of the objects &#8594 Attributes of a business key or relationship
+
+
+---
+
+# Data Vault Modeling
+
+Simple example
 
 <img src="/Data_Vault_Example.png" alt="Extremely semplified example of Data Vault modelling"/>
 
