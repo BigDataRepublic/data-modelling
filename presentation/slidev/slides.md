@@ -4,12 +4,43 @@ fonts:
   weights: '300,400,500,600,700'
   provider: none
 
-background: '/slide_background_red.png'
+class: bg-red
+---
+
+<h1 style="color: white; margin-top: -80px; margin-left: -18px; font-weight:600">Data Modelling Techniques</h1>
+
+
+---
+class: bg-white
 
 ---
 
-<h1 style="margin-top: -80px; margin-left: -15px; font-weight:600">Data Modeling Techniques</h1>
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Transactional vs Analytical Data Modelling</h1>
 
+<div class="grid-container">
+ <div>
+  <p style="color: #00b9ad">
+   • Designed primarily for daily operations and transactions in businesses like sales, inventory management, and customer service.
+   <br><br>
+   • Highly normalized with many tables to reduce data redundancy and improve data integrity.
+   <br><br>
+   • Optimized for fast data insertion, update, and retrieval operations to support real-time transaction processing.
+   <br><br>
+   • E.G. Order processing systems, inventory management systems, and customer relationship management (CRM) systems.
+  </p>
+ </div>
+ <div>
+  <p style="color: #00b9ad">
+   • Designed for analysis and decision-making, often used in data warehousing and business intelligence applications.
+   <br><br>
+   • Uses denormalized schemas like star schema or snowflake schema, allowing for complex queries and aggregations.
+   <br><br>
+   • Optimized for complex queries, large-scale data aggregation, and analytical processing.
+   <br><br>
+   • E.G. Data warehouses, online analytical processing (OLAP) systems, and big data analytics platforms.
+  </p>
+ </div>
+</div>
 
 ---
 
