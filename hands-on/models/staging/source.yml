@@ -1,0 +1,9 @@
+sources:
+  - name: raw
+    schema: "{{ env_var('RAW_SCHEMA') }}"
+    tables:
+      - name: Consultants
+      - name: Attendance
+      - name: Externals
+      - name: HandsOn
+      - name: Session
