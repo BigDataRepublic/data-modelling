@@ -1,0 +1,7 @@
+default:
+  outputs:
+    dev:
+      type: duckdb
+      path:  "{{ env_var('DB_NAME') }}"
+      schema: "{{ env_var('STAGING_SCHEMA') }}"
+  target: dev
