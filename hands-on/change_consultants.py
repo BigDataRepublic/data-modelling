@@ -1,8 +1,10 @@
 import csv
 from datetime import datetime, timedelta
+from pathlib import Path
 from random import randint, random, choice
 
-FILENAME = '/home/stefano/Repositories/data-modelling/hands-on/data/Consultants.csv'
+DATA_PATH = Path('__file__').parent / 'data'
+FILENAME = DATA_PATH / 'Consultants.csv'
 DATE_FMT = '%Y-%m-%d'
 FIRST_NAMES = [
     'Tim', 'Peter', 'Lysbeth', 'Anne', 'Ada', 'Hannah', 'Jelle', 'Anthony', 'Sara'
