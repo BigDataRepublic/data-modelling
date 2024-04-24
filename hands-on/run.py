@@ -50,15 +50,15 @@ if __name__ == '__main__':
     )
     logger.info(f"\n{test_staging.stdout.decode('utf-8')}")
 
-#    logger.info('Running `dbt run` to create data mart')
-#    marts = run(
-#        ['dbt', 'run', '--select', 'marts'],
-#        check=False, capture_output=True
-#    )
-#    logger.info(f"\n{marts.stdout.decode('utf-8')}")
-#    logger.info('Running `dbt test` to validate data mart')
-#    test_marts = run(
-#        ['dbt', 'test', '--select', 'marts',],
-#        check=False, capture_output=True
-#    )
-#    logger.info(f"\n{test_marts.stdout.decode('utf-8')}")
+    logger.info('Running `dbt run` to create data mart')
+    marts = run(
+        ['dbt', 'run', '--select', 'marts'],
+        check=False, capture_output=True
+    )
+    logger.info(f"\n{marts.stdout.decode('utf-8')}")
+    logger.info('Running `dbt test` to validate data mart')
+    test_marts = run(
+        ['dbt', 'test', '--select', 'marts',],
+        check=False, capture_output=True
+    )
+    logger.info(f"\n{test_marts.stdout.decode('utf-8')}")
