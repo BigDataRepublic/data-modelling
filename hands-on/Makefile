@@ -18,4 +18,4 @@ clean:
 	rm ./pipeline.log || true
 
 drop-db:
-	rm /tmp/datamodelling.db || true
+	rm ${DB_NAME} || true
