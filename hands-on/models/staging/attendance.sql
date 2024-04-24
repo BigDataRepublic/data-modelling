@@ -22,6 +22,6 @@ SELECT * FROM base
 {% if is_incremental() %}
 
 WHERE
-    Date > (SELECT MAX(Date) FROM {{ this }})
+    Date > (SELECT MAX(Date) FROM {{ this }}) OR ConsultantID NOT IN (SELECT DISTINCT ConsultantID FROM {{this}})
 
 {% endif %}
