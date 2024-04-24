@@ -1,0 +1,103 @@
+version: 2
+
+models:
+  - name: attendance
+    description: "Attendance Dimension"
+    columns:
+      - name: Date
+        tests:
+          - not_null
+      - name: SessionID
+        tests:
+          - not_null
+      - name: ConsultantID
+        tests:
+          - not_null
+      - name: Attendance
+        tests:
+          - not_null
+
+  - name: consultants
+    description: "Consultants Dimension"
+    columns:
+      - name: SnapshotDate
+        tests:
+          - not_null
+      - name: ConsultantID
+        tests:
+          - not_null
+      - name: Name
+        tests:
+          - not_null
+      - name: MiddleName
+      - name: Surname
+        tests:
+          - not_null
+      - name: ClientName
+        tests:
+          - not_null
+      - name: ProjectName
+        tests:
+          - not_null
+      - name: Title
+        tests:
+          - not_null
+      - name: YearsOfExperience
+        tests:
+          - not_null
+
+  - name: externals
+    description: "Externals Dimension"
+    columns:
+      - name: Date
+        tests:
+          - not_null
+      - name: SessionID
+        tests:
+          - not_null
+      - name: Name
+        tests:
+          - not_null
+      - name: Surname
+        tests:
+          - not_null
+      - name: Company
+        tests:
+          - not_null
+      - name: Email
+        tests:
+          - not_null
+
+  - name: handson
+    description: "HandsOn Dimension"
+    columns:
+      - name: Date
+        tests:
+          - not_null
+      - name: HandsOnID
+        tests:
+          - not_null
+      - name: RepositoryURL
+
+  - name: session
+    description: "Session Dimension"
+    columns:
+      - name: Date
+        tests:
+          - not_null
+      - name: SessionID
+        tests:
+          - not_null
+      - name: Subject
+        tests:
+          - not_null
+      - name: Topic
+        tests:
+          - not_null
+      - name: FullTitle
+        tests:
+          - not_null
+      - name: HandsOnID
+        tests:
+          - not_null
+      - name: SlideDeckURL
