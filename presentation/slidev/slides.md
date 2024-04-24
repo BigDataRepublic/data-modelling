@@ -44,9 +44,152 @@ class: bg-white
 
 ---
 
-# Why?
-- The design makes it easy to join data together
-- Represent the data in a way tha t the stakeholders want
+# What is data modeling?
+- Create a structured and organized representation of data elements and their relationships within a system
+- Serves as a blueprint for how data is collected, stored, managed, used within databases
+- Aims to support the organization objectives in both operational and analytical environments
+
+---
+
+Example: Imagine a table that records sales for products in various branches of a store 🏪:
+
+| BranchID | BranchLocation | ProductID | ProductName | ProductPrice |
+|----------|----------------|-----------|-------------|--------------|
+| 1        | New York       | 101       | Apple       | $1           |
+| 1        | New York       | 102       | Banana      | $0.5         |
+| 2        | Los Angeles    | 101       | Apple       | $1           |
+| 2        | Los Angeles    | 103       | Cherry      | $2           |
+
+
+---
+
+In the table above:
+
+- BranchID and ProductID together can be considered as the composite primary key.
+- BranchLocation is dependent on BranchID.
+- ProductName and ProductPrice are dependent on ProductID.
+
+---
+
+What do the normalized tables look like?
+
+
+| BranchID | BranchLocation |
+|----------|----------------|
+| 1        | New York       |
+| 2        | Los Angeles    |
+
+---
+
+| ProductID | ProductName | ProductPrice |
+|-----------|-------------|--------------|
+| 101       | Apple       | $1           |
+| 102       | Banana      | $0.5         |
+| 103       | Cherry      | $2           |
+
+---
+
+| BranchID | ProductID |
+|----------|-----------|
+| 1        | 101       |
+| 1        | 102       |
+| 2        | 101       |
+| 2        | 103       |
+
+---
+
+# Why do we model data?
+
+**Clarity and understanding:**
+- Normalization simplifies the database structure. 
+- By dividing the data into three distinct tables — one for branches, one for products, and a linking table for branch-product relationships — it becomes easier to understand the relationships between different data entities.
+
+---
+
+**Data Quality and Consistency:**
+- Branch details are stored only once in the branch table, which reduces the risk of inconsistent data (e.g., having different spellings for the same branch location in multiple records).
+- Product details are similarly centralized, ensuring that any updates to a product's price or name need only be made in one place, thereby maintaining consistency across all entries that reference the product.
+
+---
+
+
+- It helps with clarity and understanding
+- Data Quality and Consistency
+- Efficient Data Management (removing redundancy and improving data retrieval speeds)
+- Facilitates data integration
+- Future Scalability and Flexibility
+
+---
+
+# Types of data models
+- Conceptual Data Model
+- Logical Data Model
+- Physical Data Model
+
+---
+
+
+# What is a Data Warehouse?
+- A centralized repository to support business intelligence (BI) activities
+- Stores current and historical data from various sources
+- Optimized for query and analysis
+
+---
+
+# In practice
+Put another SQL database on top of your production DB
+
+---
+
+# Goals?
+- Consolidation: Brings data from diverse sources into one unified view.
+- Reporting & Analysis: Supports complex queries and reporting.
+- Historical Insight: Maintains historical data for trend analysis.
+- Data Integrity: Ensures consistent, clean, and reliable data.
+
+---
+
+# What is a data mart?
+- A subset of the data warehouse
+- Normally related to a specific team in the business (for example marketing)
+- Only provides the data related to this business unit
+
+---
+
+# What problems do you think arise with data marts?
+- Data consistency: Ensuring data in the data mart is consistent with other marts and the main warehouse.
+- Maintenance: Keeping the data mart updated as business needs evolve.
+- Integration: If starting with independent data marts, integrating them can be challenging.
+
+---
+
+# Okay but how do we actually go about building our warehouse and marts?
+--> data modelling
+
+---
+
+Step by step:
+- Requirements analysis: what do the stakeholders want to derive from the data? Can be very laborious if the comapny is large
+- Understand your sources: find all of the companies data. Work out what is useful and what is not
+- Data Modelling: decide how you are going to model the data
+
+---
+
+# Inmon approach
+Bill Inmon is the big daddy of data warehousing
+
+---
+
+# Focus is on a single source of truth
+A subject-oriented, integrated, time variant, non-volatile collection of data in support of management's decision-making process
+
+---
+
+# Key features
+- Subject-Oriented: Organized around subjects like sales, products, or customers.
+- Integrated: Data is consistent across all subjects.
+- Time-Variant: Historical data is kept for analysis over time.
+- Non-Volatile: Once data is in the warehouse, it doesn't change.
 
 ---
 
@@ -55,6 +198,74 @@ class: bg-white
 - Advantage of this top-down approach in database design is that it is robust to business changes and contains a dimensional perspective of data across data mart
 - Querying becomes challenging as it includes numerous tables
 
+Example: Imagine a table that records sales for products in various branches of a store 🏪:
+
+| BranchID | BranchLocation | ProductID | ProductName | ProductPrice |
+|----------|----------------|-----------|-------------|--------------|
+| 1        | New York       | 101       | Apple       | $1           |
+| 1        | New York       | 102       | Banana      | $0.5         |
+| 2        | Los Angeles    | 101       | Apple       | $1           |
+| 2        | Los Angeles    | 103       | Cherry      | $2           |
+
+
+---
+
+In the table above:
+
+- BranchID and ProductID together can be considered as the composite primary key.
+- BranchLocation is dependent on BranchID.
+- ProductName and ProductPrice are dependent on ProductID.
+
+---
+
+What do the normalized tables look like?
+
+
+| BranchID | BranchLocation |
+|----------|----------------|
+| 1        | New York       |
+| 2        | Los Angeles    |
+
+---
+
+| ProductID | ProductName | ProductPrice |
+|-----------|-------------|--------------|
+| 101       | Apple       | $1           |
+| 102       | Banana      | $0.5         |
+| 103       | Cherry      | $2           |
+
+| BranchID | ProductID |
+|----------|-----------|
+| 1        | 101       |
+| 1        | 102       |
+| 2        | 101       |
+| 2        | 103       |
+
+---
+
+Now, the tables are in 3NF:
+
+- In the Branches table, BranchLocation is functionally dependent on BranchID.
+- In the Products table, both ProductName and ProductPrice are functionally dependent on ProductID.
+- The Sales table just links branches and products, with no transitive dependencies.
+
+---
+
+This design ensures that product details and prices are stored in one place, reducing redundancy and the chance of anomalies. For instance, if the price of "Apple" changes, it only needs to be updated in one place in the Products table.
+
+---
+
+Now, the tables are in 3NF:
+
+- In the Branches table, BranchLocation is functionally dependent on BranchID.
+- In the Products table, both ProductName and ProductPrice are functionally dependent on ProductID.
+- The Sales table just links branches and products, with no transitive dependencies.
+
+This design ensures that product details and prices are stored in one place, reducing redundancy and the chance of anomalies. For instance, if the price of "Apple" changes, it only needs to be updated in one place in the Products table.
+
+---
+
+The data modelling is top down, as you start with a broad and comprehensive view of the entire organization before focusing on the specific details of individual data elements and structures.
 
 ---
 
