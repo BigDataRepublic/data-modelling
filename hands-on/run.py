@@ -36,20 +36,20 @@ if __name__ == '__main__':
     ingest_data(conn)
     conn.close()
 
-#    logger.info('Ingestion complete. Running `dbt run` to create dimension tables')
-#    dimensions = run(
-#        ['dbt', 'run', '--select', 'staging'],
-#        check=False, capture_output=True
-#    )
-#    logger.info(f"\n{dimensions.stdout.decode('utf-8')}")
-#
-#    logger.info('Running `dbt test` to validate dimension tables')
-#    test_staging = run(
-#        ['dbt', 'test', '--select', 'staging', '--indirect-selection=cautious'],
-#        check=False, capture_output=True
-#    )
-#    logger.info(f"\n{test_staging.stdout.decode('utf-8')}")
-#
+    logger.info('Ingestion complete. Running `dbt run` to create tables')
+    dimensions = run(
+        ['dbt', 'run', '--select', 'staging'],
+        check=False, capture_output=True
+    )
+    logger.info(f"\n{dimensions.stdout.decode('utf-8')}")
+
+    logger.info('Running `dbt test` to validate tables')
+    test_staging = run(
+        ['dbt', 'test', '--select', 'staging', '--indirect-selection=cautious'],
+        check=False, capture_output=True
+    )
+    logger.info(f"\n{test_staging.stdout.decode('utf-8')}")
+
 #    logger.info('Running `dbt run` to create data mart')
 #    marts = run(
 #        ['dbt', 'run', '--select', 'marts'],
