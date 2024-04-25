@@ -46,8 +46,7 @@ class: bg-white
 
 # What is analytical data modeling?
 - Create a structured and organized representation of **data elements** and their **relationships** within a system
-- Serves as a **blueprint**  for how data is collected, stored, managed, used within databases
-- Aims to support the organization objectives in both operational and analytical environments
+- Aims to support the organization objectives in analytical environments
 
 ---
 
@@ -206,29 +205,19 @@ E.g. a Bigquery database on top of Postgres
 
 ---
 
-# What problems do you think arise with data marts?
-- Data consistency: Ensuring data in the data mart is consistent with other marts and the main warehouse.
-- Maintenance: Keeping the data mart updated as business needs evolve.
-- Integration: If starting with independent data marts, integrating them can be challenging.
-
----
-
 # Okay but how do we actually go about building our warehouse and marts?
---> data modelling
 
----
-
-# But before that...
-
-Step by step:
-- Requirements analysis: what do the stakeholders want to derive from the data? Can be very laborious if the comapny is large
-- Understand your sources: find all of the companies data. Work out what is useful and what is not
-- Data Modelling: decide how you are going to model the data
+- **Requirements analysis:** what do the stakeholders want to derive from the data? Can be very laborious if the comapny is large
+- **Understand your sources**: find all of the companies data. Work out what is useful and what is not
+- **Data Modeling**: decide how you are going to model the data
 
 ---
 
 # Inmon approach
 Bill Inmon is the father of data warehousing
+
+<img src="/inmon.png" alt="Inmon"/>
+
 
 ---
 
@@ -248,11 +237,23 @@ Bill Inmon is the father of data warehousing
 - Single source of truth for the entire organization
 - Advantage of this top-down approach in database design is that it is **robust to business changes** and contains a dimensional perspective of data across data mart
 - Requires a more substantial upfront investment in planning and resources
-- **Querying becomes challenging** as it includes numerous tables
+- **Querying becomes challenging** as it includes numerous tables ==> a lot of joins
 
 ---
 
 # Star Schema (Kimball)
+
+<img src="/Ralph.jpg" alt="Ralph Kimball"/>
+
+---
+
+# His family
+
+<img src="/kimball_group.png" alt="Kimball Group"/>
+
+---
+
+<img src="/star_schema.jpeg" alt="Star Schema"/>
 
 ---
 
@@ -270,12 +271,11 @@ Bill Inmon is the father of data warehousing
 2. Determine dimensions (attributes and descriptions around a fact)
 3. Create mart - which we want our end users to interact with more 
 
-💡 The combination of a fact table with several dimension tables is called the start schema
+💡 The combination of a fact table with several dimension tables is called the star schema
 
 ---
 
 # Facts
-
 
 | Date       | CampaignName | Impressions | Clicks | Conversions | Spend |
 |------------|--------------|-------------|--------|-------------|-------|
@@ -316,14 +316,22 @@ Bill Inmon is the father of data warehousing
 
 ---
 
-In this simplified model:
+# Kimball
 
-- The Campaign Performance table provides metrics on how each campaign performed on a given date.
-- The Campaign Details table provides additional context about each campaign, such as its duration, target audience, and channel.
+In this simplified model:
+- The Campaign Performance table provides **metrics** on how each campaign performed on a given date.
+- The Campaign Details table provides **additional context** about each campaign, such as its duration, target audience, and channel.
 
 This model allows marketing teams to quickly see how each campaign is performing and understand the context behind each campaign.
 
+---
+
 # ❓ What are the benefits?
+- Simple
+- Query simplicity
+- Great for analysis (focus on the BI side)
+
+---
 
 # Conformed dimensions
 - One dimension might be able to be joined with multiple facts table
@@ -382,6 +390,8 @@ VALUES (123, 'John', 'Office B', CURRENT_DATE, NULL);
 - Common attributes are "IsPromotionalSale", "IsOnlinePurchase", or "HasWarranty"
 - Do not want to place these in the facts table
 
+---
+
 # Create Marts
 - Join facts & dims to create custom views/tables
 - e.g. see total orders by product, customer etc.
@@ -396,10 +406,60 @@ VALUES (123, 'John', 'Office B', CURRENT_DATE, NULL);
 - Fast to construct, no normalization required
 - Easily to comprehened, simplifying querying and analysis
 
----
-
 # Disadvantages
 - Data isn't entirely integrated before reporting: no single source of truth
+
+---
+
+# ❓ Which one do you choose?
+
+---
+
+# Time to value ⏰
+
+**Kimball**:
+- Faster initial results due to focus on specific business needs.
+- Delivers value iteratively.
+
+**Inmon**:
+- Longer initial setup due to comprehensive EDW design.
+- Value realized when EDW is established and data marts are derived.
+
+---
+
+# Complexity & Integration ⚙️
+
+**Kimball**:
+- Initial setup is simpler.
+- Complexity can arise when integrating multiple data marts.
+
+**Inmon**:
+- Initial design is complex due to enterprise-wide considerations.
+- Integration is inherent, as data marts are derived from a unified EDW.
+
+---
+
+# Flexibility vs. Consistency 💪
+
+**Kimball**:
+- More flexible to departmental needs.
+- Risk of inconsistencies across data marts.
+
+**Inmon**:
+- Consistent data model across the organization.
+- Less flexibility for department-specific nuances.
+
+---
+
+# Maintenance & Scalability 👩‍🔧
+
+**Kimball**:
+- Maintenance can be challenging when integrating or changing multiple data marts.
+- Scalable in terms of adding new data marts.
+
+**Inmon**:
+- Centralized maintenance at the EDW level.
+- Scalability requires changes to the central EDW, but data marts can be easily derived.
 
 ---
 
