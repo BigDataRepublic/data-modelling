@@ -44,7 +44,7 @@ class: bg-white
 
 ---
 
-# What is data modeling?
+# What is analytical data modeling?
 - Create a structured and organized representation of data elements and their relationships within a system
 - Serves as a blueprint for how data is collected, stored, managed, used within databases
 - Aims to support the organization objectives in both operational and analytical environments
