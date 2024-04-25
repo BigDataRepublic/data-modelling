@@ -333,7 +333,7 @@ This model allows marketing teams to quickly see how each campaign is performing
 
 ---
 
-# Conformed dimensions
+# Conformed dimensions (used for integrating data)
 - One dimension might be able to be joined with multiple facts table
 - Guarantees that a single data item is used in a similar manner across all the facts
 - Ensures that all departments work with the same data definitions
@@ -408,6 +408,7 @@ VALUES (123, 'John', 'Office B', CURRENT_DATE, NULL);
 
 # Disadvantages
 - Data isn't entirely integrated before reporting: no single source of truth
+- Redundant data can be added to tables
 
 ---
 
