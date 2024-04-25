@@ -71,7 +71,6 @@ Example: Imagine a table that records sales for products in various branches of 
 | 2        | Los Angeles    | 103       | Cherry      | $2           |
 
 In the table above ☝️
-- BranchID and ProductID together can be considered as the composite primary key.
 - BranchLocation is dependent on BranchID.
 - ProductName and ProductPrice are dependent on ProductID.
 
@@ -121,32 +120,24 @@ We can **normalize** the tables ➡️ divide into smaller, less redundant table
 # Why do we model data?
 
 ### 2️⃣ Data Quality and Consistency:
-- Branch details are stored only once in the branch table, which reduces the risk of inconsistent data (e.g., having different spellings for the same branch location in multiple records).
-- Product details are similarly centralized, ensuring that any updates to a product's price or name need only be made in one place, thereby maintaining consistency across all entries that reference the product.
+- Branch details are stored only once in the branch table, which reduces the risk of inconsistent data
+- Product details are similarly centralized, ensuring that any updates to a product's price or name need only be made in one place, thereby maintaining consistency 
 
 ---
 
 # Why do we model data?
 
 ### 3️⃣ Efficient Data Management:
-- Queries related to specific entities (like all products sold at a branch or all branches selling a particular product) become faster and less complex because the data is segmented and indexed more effectively.
-- Operations like updates, inserts, and deletions are more efficient because they are localized to specific, smaller tables rather than a large, monolithic table.
+- Queries related to specific entities become faster and less complex 
+- Operations like updates, inserts, and deletions are more efficient
 
 ---
 
 # Why do we model data?
 
 ### 4️⃣ Facilitates Data Integration:
-- Integrating data from different sources (like merging another set of branch and product data from a different system) becomes easier because the structure dictates where and how new data fits into the existing schema.
-- It supports the use of standard interfaces for database interactions, which is crucial when combining data from disparate systems or preparing for enterprise-level data analysis
-
----
-
-# Why do we model data?
-
-### 5️⃣ Facilitates Data Integration:
-- As the organization grows (e.g., opening new branches or expanding product lines), the database can accommodate new data without significant restructuring.
-- Adjustments to the database (like adding new attributes to entities) can be managed with minimal disruption to the existing database operations.
+- As the organization grows (e.g., opening new branches or expanding product lines), the database can easiliy accommodate new data 
+- Adjustments to the database (like adding new attributes to entities) can be managed with minimal disruption 
 
 ---
 
@@ -187,7 +178,7 @@ E.g. a Bigquery database on top of Postgres
 - **Subject-Oriented**: Organized around subjects like sales, products, or customers.
 - **Integrated**: Data is consistent across all subjects.
 - **Time-Variant**: Historical data is kept for analysis over time.
-- **Non-Volatile**: Once data is in the warehouse, it doesn't change.
+- **Non-Volatile**: Once data is in the warehouse, it doesn't change. (just keep appending)
 
 ---
 
@@ -207,7 +198,7 @@ E.g. a Bigquery database on top of Postgres
 
 # Okay but how do we actually go about building our warehouse and marts?
 
-- **Requirements analysis:** what do the stakeholders want to derive from the data? Can be very laborious if the comapny is large
+- **Requirements analysis:** what do the stakeholders want to derive from the data? 
 - **Understand your sources**: find all of the companies data. Work out what is useful and what is not
 - **Data Modeling**: decide how you are going to model the data
 
@@ -222,9 +213,9 @@ Bill Inmon is the father of data warehousing
 ---
 
 # How?
-- Normalized to the third normal form (3NF), which is the type of normalization that we saw in our first example
+- Normalized to the third normal form (3NF)
 - Create the data warehouse
-- Then build the marts ➡️ this is a top down approach
+- Then build the marts ➡️ top down approach
 
 ---
 
@@ -233,11 +224,11 @@ Bill Inmon is the father of data warehousing
 ---
 
 # Normalized (Inmon)
-- Uses the normalized form for building entity structure, **avoiding data redundancy** as much as possible.
-- Single source of truth for the entire organization
-- Advantage of this top-down approach in database design is that it is **robust to business changes** and contains a dimensional perspective of data across data mart
-- Requires a more substantial upfront investment in planning and resources
-- **Querying becomes challenging** as it includes numerous tables ==> a lot of joins
+- **Normalized**
+- **Single source of truth** for the entire organization
+- **Robust to business changes** 
+- Upfront investment in planning and resources
+- **Querying becomes challenging** ==> a lot of joins
 
 ---
 
