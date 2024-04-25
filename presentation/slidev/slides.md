@@ -7,7 +7,7 @@ fonts:
 class: bg-red
 ---
 
-<h1 style="color: white; margin-top: -80px; margin-left: -18px; font-weight:600">Data Modelling Techniques</h1>
+<h1 style="color: white; margin-top: -80px; margin-left: -18px; font-weight:600">Data Modeling Techniques</h1>
 
 
 ---
@@ -15,7 +15,7 @@ class: bg-white
 
 ---
 
-<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Transactional vs Analytical Data Modelling</h1>
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Transactional vs Analytical Data Modeling</h1>
 
 <div class="grid-container">
  <div>
@@ -43,130 +43,365 @@ class: bg-white
 </div>
 
 ---
-
-# What is analytical data modeling?
-- Create a structured and organized representation of **data elements** and their **relationships** within a system
-- Aims to support the organization objectives in analytical environments
+class: bg-white
 
 ---
 
-Example: Imagine a table that records sales for products in various branches of a store 🏪:
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">What Is Analytical Data Modeling</h1>
 
-| BranchID | BranchLocation | ProductID | ProductName | ProductPrice |
-|----------|----------------|-----------|-------------|--------------|
-| 1        | New York       | 101       | Apple       | $1           |
-| 1        | New York       | 102       | Banana      | $0.5         |
-| 2        | Los Angeles    | 101       | Apple       | $1           |
-| 2        | Los Angeles    | 103       | Cherry      | $2           |
+ <div>
+  <p style="color: #00b9ad">
+    <br><br>
+   <h3>• Create a structured and organized representation of <b>data elements</b> and their <b>relationships</b> within a system</h3>
+   <br><br>
+   <h3>• Aims to support the organization objectives in analytical environments</h3>
+  </p>
+ </div>
+
+---
+class: bg-white
+
+---
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">What Is Analytical Data Modeling</h1>
+<div>
+  <h4 style="color: #0c2749; font-weight:400">Example: Imagine a table that records sales for products in various branches of a store 🏪</h4>
+  <div>
+    <br>
+    <table border="1" style="color: #0c2749; font-weight:300">
+    <thead>
+      <tr>
+        <th>BranchID</th>
+        <th>BranchLocation</th>
+        <th>ProductID</th>
+        <th>ProductName</th>
+        <th>ProductPrice</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>New York</td>
+        <td>101</td>
+        <td>Apple</td>
+        <td>$1</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>New York</td>
+        <td>102</td>
+        <td>Banana</td>
+        <td>$0.5</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Los Angeles</td>
+        <td>101</td>
+        <td>Apple</td>
+        <td>$1</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Los Angeles</td>
+        <td>103</td>
+        <td>Cherry</td>
+        <td>$2</td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+</div>
+
+---
+class: bg-white
+
+---
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">What Is Analytical Data Modeling</h1>
+<div>
+  <h4 style="color: #0c2749; font-weight:400">Example: Imagine a table that records sales for products in various branches of a store 🏪</h4>
+  <div>
+    <br>
+    <table border="1" style="color: #0c2749; font-weight:300">
+    <thead>
+      <tr>
+        <th>BranchID</th>
+        <th>BranchLocation</th>
+        <th>ProductID</th>
+        <th>ProductName</th>
+        <th>ProductPrice</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>New York</td>
+        <td>101</td>
+        <td>Apple</td>
+        <td>$1</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>New York</td>
+        <td>102</td>
+        <td>Banana</td>
+        <td>$0.5</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Los Angeles</td>
+        <td>101</td>
+        <td>Apple</td>
+        <td>$1</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Los Angeles</td>
+        <td>103</td>
+        <td>Cherry</td>
+        <td>$2</td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+  <p style="color: #00b9ad; margin-top: 4px;">
+   <h4>In the table above ☝️</h4>
+   <br>
+   <h5 style="margin-top: -15px;">&nbsp;&nbsp;- <i>BranchLocation</i> is dependent on <i>BranchID</i>.</h5>
+   <br>
+   <h5 style="margin-top: -20px;">&nbsp;&nbsp;- <i>ProductName</i> and <i>ProductPrice</i> are dependent on <i>ProductID</i>.</h5>
+  </p>
+</div>
+
+
+---
+class: bg-white
 
 ---
 
-Example: Imagine a table that records sales for products in various branches of a store 🏪:
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Can We Make The Structure More Clear? 🤔</h1>
 
-| BranchID | BranchLocation | ProductID | ProductName | ProductPrice |
-|----------|----------------|-----------|-------------|--------------|
-| 1        | New York       | 101       | Apple       | $1           |
-| 1        | New York       | 102       | Banana      | $0.5         |
-| 2        | Los Angeles    | 101       | Apple       | $1           |
-| 2        | Los Angeles    | 103       | Cherry      | $2           |
+ <div>
+  <br>
+  <h4 style="color: #0c2749; font-weight:400">We can <b>normalize</b> the tables ➡️ divide into smaller, less redundant tables
+</h4>
+  <br>
+  <table border="1" style="color: #0c2749; font-weight: 300;">
+  <thead>
+    <tr>
+      <th>BranchID</th>
+      <th>BranchLocation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>New York</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Los Angeles</td>
+    </tr>
+  </tbody>
+  </table>
+ </div>
 
-In the table above ☝️
-- BranchLocation is dependent on BranchID.
-- ProductName and ProductPrice are dependent on ProductID.
+---
+class: bg-white
 
 ---
 
-# 🤔 How could we model this to make the structures more clear?
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Can We Make The Structure More Clear? 🤔</h1>
 
-We can **normalize** the tables ➡️ divide into smaller, less redundant tables
+ <div>
+  <br>
+  <h4 style="color: #0c2749; font-weight:400">We can <b>normalize</b> the tables ➡️ divide into smaller, less redundant tables
+</h4>
+  <br>
+  <table border="1" style="color: #0c2749; font-weight: 300;">
+  <thead>
+    <tr>
+      <th>ProductID</th>
+      <th>ProductName</th>
+      <th>ProductPrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>101</td>
+      <td>Apple</td>
+      <td>$1</td>
+    </tr>
+    <tr>
+      <td>102</td>
+      <td>Banana</td>
+      <td>$0.5</td>
+    </tr>
+    <tr>
+      <td>103</td>
+      <td>Cherry</td>
+      <td>$2</td>
+    </tr>
+  </tbody>
+</table>
 
+ </div>
 
-| BranchID | BranchLocation |
-|----------|----------------|
-| 1        | New York       |
-| 2        | Los Angeles    |
+---
+class: bg-white
 
 ---
 
-| ProductID | ProductName | ProductPrice |
-|-----------|-------------|--------------|
-| 101       | Apple       | $1           |
-| 102       | Banana      | $0.5         |
-| 103       | Cherry      | $2           |
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Can We Make The Structure More Clear? 🤔</h1>
+
+ <div>
+  <br>
+  <h4 style="color: #0c2749; font-weight:400">We can <b>normalize</b> the tables ➡️ divide into smaller, less redundant tables
+</h4>
+  <br>
+  <table border="1" style="color: #0c2749; font-weight: 300; border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th>BranchID</th>
+      <th>ProductID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>101</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>102</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>101</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>103</td>
+    </tr>
+  </tbody>
+  </table>
+ </div>
+
+---
+class: bg-white
 
 ---
 
-| BranchID | ProductID |
-|----------|-----------|
-| 1        | 101       |
-| 1        | 102       |
-| 2        | 101       |
-| 2        | 103       |
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Why Do We Model Data?</h1>
+
+ <div>
+  <br>
+  <h3 style="color: #0c2749; font-weight:400">1️⃣ Clarity and understanding</h3>
+  <p style="color: #00b9ad">
+   • Normalization simplifies the database structure.
+   <br><br>
+   • It becomes easier to understand the relationships between different data entities.
+  </p>
+ </div>
+ <div>
+  <br>
+  <h3 style="color: #0c2749; font-weight:400">2️⃣ Data Quality and Consistency</h3>
+  <p style="color: #00b9ad">
+   • Branch details are stored only once in the branch table, which reduces the risk of inconsistent data.
+   <br><br>
+   • Product details are similarly centralized, ensuring that any updates to a product's price or name need only be made in one place, thereby maintaining consistency
+  </p>
+ </div>
+
+---
+class: bg-white
 
 ---
 
-# Why do we model data?
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Why Do We Model Data?</h1>
 
-### 1️⃣ Clarity and understanding:
-- Normalization simplifies the database structure. 
-- It becomes easier to understand the relationships between different data entities.
+ <div>
+  <br>
+  <h3 style="color: #0c2749; font-weight:400">3️⃣ Efficient Data Management</h3>
+  <p style="color: #00b9ad">
+   • Queries related to specific entities become faster and less complex.
+   <br><br>
+   • Operations like updates, inserts, and deletions are more efficient.
+  </p>
+ </div>
+ <div>
+  <br>
+  <h3 style="color: #0c2749; font-weight:400">4️⃣ Facilitates Data Integration</h3>
+  <p style="color: #00b9ad">
+   • As the organization grows (e.g., opening new branches or expanding product lines), the database can easiliy accommodate new data.
+   <br><br>
+   • Adjustments to the database (like adding new attributes to entities) can be managed with minimal disruption.
+  </p>
+ </div>
+
+---
+class: bg-white
 
 ---
 
-# Why do we model data?
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Let's introduce a few more concepts 💡 </h1>
 
-### 2️⃣ Data Quality and Consistency:
-- Branch details are stored only once in the branch table, which reduces the risk of inconsistent data
-- Product details are similarly centralized, ensuring that any updates to a product's price or name need only be made in one place, thereby maintaining consistency 
+ <div>
+  <p style="color: #00b9ad">
+  <br><br>
+  <h2>• Data Warehouse</h2>
+  <br><br>
+  <h2>• Data Mart</h2>
+  <br><br>
+  <h2>• Data Lake</h2>
+  </p>
+ </div>
+ 
+---
+class: bg-white
 
 ---
 
-# Why do we model data?
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Data Warehouse</h1>
 
-### 3️⃣ Efficient Data Management:
-- Queries related to specific entities become faster and less complex 
-- Operations like updates, inserts, and deletions are more efficient
+ <div>
+  <p style="color: #00b9ad">
+    <br><br>
+   <h2>• A centralized storage to support all business intelligence (BI) activities</h2>
+   <br><br>
+   <h2>• Stores current and historical data from various sources</h2>
+    <br><br>
+   <h2>• Optimized for query and analysis</h2>
+  </p>
+ </div>
+
+---
+class: bg-white
 
 ---
 
-# Why do we model data?
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Data Warehouse</h1>
+<br>
+<img src="/data-warehousing.png" alt="Data Warehousing graph" width="85%" style="display: block; margin: auto;">
 
-### 4️⃣ Facilitates Data Integration:
-- As the organization grows (e.g., opening new branches or expanding product lines), the database can easiliy accommodate new data 
-- Adjustments to the database (like adding new attributes to entities) can be managed with minimal disruption 
+---
+class: bg-white
 
 ---
 
-# 💡 Let's introduce a few more concepts
-- Data Warehouse
-- Data Mart
-- Data Lake
-
----
-
-# Data Warehouse
-- A centralized repository to support business intelligence (BI) activities
-- Stores current and historical data from various sources
-- Optimized for query and analysis
-
----
-
-<img src="/data-warehousing.png" alt="Data Warehousing graph"/>
-
----
-
-# In practice
-Put another SQL database on top of your production DB (which are the data sources)
-
-E.g. a Bigquery database on top of Postgres
-
----
-
-# 🎯 Goals?
-- **Consolidation**: Brings data from diverse sources into one unified view.
-- **Reporting & Analysis**: Supports complex queries and reporting.
-- **Historical Insight**: Maintains historical data for trend analysis.
-- **Data Integrity**: Ensures consistent, clean, and reliable data.
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">In Practice...</h1>
+<br>
+<h2 style="color: #0c2749; margin-left: -15px; font-weight:600">Put another SQL database "on top" of your production DB's (which are the data sources)</h2>
+<br>
+<h3 style="color: #00b9ad; margin-left: -15px; font-weight:600">E.g. a Bigquery database on top of Postgres</h3>
+<br>
+<h2 style="color: #0c2749; margin-left: -15px; font-weight:600">🎯 Goals?</h2>
+ <div>
+  <p style="color: #00b9ad">
+   <h4 style="margin-top: 15px;">• <b>Consolidation</b>: Brings data from diverse sources into one unified view.</h4>
+   <h4 style="margin-top: 5px;">• <b>Reporting & Analysis</b>: Supports complex queries and reporting.</h4>
+   <h4 style="margin-top: 5px;">• <b>Historical Insight</b>: Maintains historical data for trend analysis.</h4>
+   <h4 style="margin-top: 5px;">• <b>Data Integrity</b>: Ensures consistent, clean, and reliable data.</h4>
+  </p>
+ </div>
 
 ---
 
