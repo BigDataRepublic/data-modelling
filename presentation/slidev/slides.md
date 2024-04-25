@@ -393,7 +393,7 @@ class: bg-white
 <br>
 <h3 style="color: #00b9ad; margin-left: -15px; font-weight:600">E.g. a Bigquery database on top of Postgres</h3>
 <br>
-<h2 style="color: #0c2749; margin-left: -15px; font-weight:600">🎯 Goals?</h2>
+<h2 style="color: #0c2749; margin-left: -15px; font-weight:600">🎯 Goals</h2>
  <div>
   <p style="color: #00b9ad">
    <h4 style="margin-top: 15px;">• <b>Consolidation</b>: Brings data from diverse sources into one unified view.</h4>
@@ -404,302 +404,611 @@ class: bg-white
  </div>
 
 ---
-
-# 🔑 Key features
-- **Subject-Oriented**: Organized around subjects like sales, products, or customers.
-- **Integrated**: Data is consistent across all subjects.
-- **Time-Variant**: Historical data is kept for analysis over time.
-- **Non-Volatile**: Once data is in the warehouse, it doesn't change. (just keep appending)
+class: bg-white
 
 ---
 
-# What is a data mart?
-- A subset of the data warehouse
-- Normally related to a specific team in the business (for example marketing)
-- Only provides the data related to this business unit
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">In Practice...</h1>
+<br>
+<h2 style="color: #0c2749; margin-left: -15px; font-weight:600">Put another SQL database "on top" of your production DB's (which are the data sources)</h2>
+<br>
+<h3 style="color: #00b9ad; margin-left: -15px; font-weight:600">E.g. a Bigquery database on top of Postgres</h3>
+<br>
+<h2 style="color: #0c2749; margin-left: -15px; font-weight:600">🔑 Key features</h2>
+ <div>
+  <p style="color: #00b9ad">
+   <h4 style="margin-top: 15px;">• <b>Subject-Oriented</b>: Organized around subjects like sales, products, or customers.</h4>
+   <h4 style="margin-top: 5px;">• <b>Integrated</b>: Data is consistent across all subjects.</h4>
+   <h4 style="margin-top: 5px;">• <b>Time-Variant</b>: Historical data is kept for analysis over time.</h4>
+   <h4 style="margin-top: 5px;">• <b>Non-Volatile</b>: Once data is in the warehouse, it doesn't change (just keep appending).</h4>
+  </p>
+ </div>
+
+---
+class: bg-white
 
 ---
 
-# Why do we break down the warehouse like this?
-- **Performance**: Faster query performance due to reduced data volume.
-- **Agility**: Quicker to build and modify.
-- **User-Friendly**: Tailored to specific business unit needs, making it more intuitive.
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Data Mart</h1>
+
+ <div>
+  <p style="color: #00b9ad; margin-top: 25px">
+   <h3>• A subset of the data warehouse</h3>
+   <br>
+   <h3>• Normally related to a specific team in the business (for example marketing)</h3>
+    <br>
+   <h3>• Only provides the data related to this business unit</h3>
+  </p>
+ </div>
+
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Why do we break down the warehouse like this?</h2>
+ <div>
+  <p style="color: #00b9ad">
+   <h4 style="margin-top: 15px;">• <b>Performance</b>: Faster query performance due to reduced data volume.</h4>
+   <h4 style="margin-top: 5px;">• <b>Agility</b>: Quicker to build and modify.</h4>
+   <h4 style="margin-top: 5px;">• <b>User-Friendly</b>: Tailored to specific business unit needs, making it more intuitive.</h4>
+  </p>
+ </div>
+
+---
+class: bg-white
 
 ---
 
-# Okay but how do we actually go about building our warehouse and marts?
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Data Mart</h1>
 
-- **Requirements analysis:** what do the stakeholders want to derive from the data? 
-- **Understand your sources**: find all of the companies data. Work out what is useful and what is not
-- **Data Modeling**: decide how you are going to model the data
+ <div>
+  <p style="color: #00b9ad; margin-top: 25px">
+   <h3>• A subset of the data warehouse</h3>
+   <br>
+   <h3>• Normally related to a specific team in the business (for example marketing)</h3>
+    <br>
+   <h3>• Only provides the data related to this business unit</h3>
+  </p>
+ </div>
+
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Okay, but how do we actually go about building our warehouse and marts?</h2>
+ <div>
+  <p style="color: #00b9ad">
+   <h4 style="margin-top: 15px;">• <b>Requirements analysis</b>: what do the stakeholders want to derive from the data?</h4>
+   <h4 style="margin-top: 5px;">• <b>Understand your sources</b>: Find all of the companies data. What is useful and what is not.</h4>
+   <h4 style="margin-top: 5px;">• <b>Data Modeling</b>: Decide how you are going to model the data.</h4>
+  </p>
+ </div>
+
+---
+class: bg-white
 
 ---
 
-# Inmon approach
-Bill Inmon is the father of data warehousing
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Inmon Approach</h1>
 
-<img src="/inmon.png" alt="Inmon"/>
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Bill Inmon is the father of data warehousing</h2>
 
+<img src="/inmon.png" alt="Bill Inmon" style="margin-top: 20px"/>
+
+---
+class: bg-white
 
 ---
 
-# How?
-- Normalized to the third normal form (3NF)
-- Create the data warehouse
-- Then build the marts ➡️ top down approach
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Inmon Approach</h1>
 
----
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Bill Inmon is the father of data warehousing</h2>
 
+<div class="grid-container">
 <img src="/top_vs_bottom_wh.png" alt="Data Warehousing graph"/>
+<div>
+  <h4 style="color: #0c2749; margin-left: -15px; margin-top:-5px; font-weight:300">⬆️ Single <b>source of truth</b> for the entire organization.</h4>
+  <h4 style="color: #0c2749; margin-left: -15px; margin-top:2px; font-weight:300">⬆️ <b>Robust to business changes.</b></h4>
+  <h4 style="color: #0c2749; margin-left: -15px; margin-top:2px; font-weight:300">⬇️ Upfront investment in planning and resources.</h4>
+  <h4 style="color: #0c2749; margin-left: -15px; margin-top:2px; font-weight:300">⬇️ <b>Querying becomes challenging</b> ==> a lot of joins.</h4>
+  
+  <h2 style="color: #0c2749; margin-left: -15px; margin-top:10px; font-weight:400">How?</h2>
+  <p style="color: #00b9ad; margin-top: -2px">
+   • Normalize to the third normal form (3NF).
+   <br>
+   • Create the data warehouse.
+   <br>
+   • Then build the marts ➡️ top down approach.
+  </p>
+ </div>
+
+</div>
+
+
+---
+class: bg-white
 
 ---
 
-# Normalized (Inmon)
-- **Normalized**
-- **Single source of truth** for the entire organization
-- **Robust to business changes** 
-- Upfront investment in planning and resources
-- **Querying becomes challenging** ==> a lot of joins
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Kimball Approach</h1>
+
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Ralph Kimball is the father of Dimensional Modeling</h2>
+
+<div class="grid-container">
+<div>
+<img src="/Ralph.jpg" alt="Ralph Kimball" style="margin-left: 15px; margin-top: -5px" width="55%"/>
+</div>
+<div>
+<img src="/kimball_group.png" alt="Kimball Group" style="margin-top: -5px" width="67%"/>
+</div>
+</div>
+
+---
+class: bg-white
+
+---
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Kimball Approach</h1>
+<h4 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">💡 The combination of a fact table with several dimension tables is called the <b>star schema</b></h4>
+
+<div class="grid-container">
+<div>
+  <p style="color: #0c2749; margin-top: -4px;">
+   <h4>Four-step dimensional design process</h4>
+   <br>
+   <h5 style="color: #00b9ad; margin-top: -15px;">&nbsp;&nbsp;- Select the business process.</h5>
+   <br>
+   <h5 style="color: #00b9ad; margin-top: -20px;">&nbsp;&nbsp;- Declare the grain.</h5>
+   <br>
+   <h5 style="color: #00b9ad; margin-top: -20px;">&nbsp;&nbsp;- Identify the dimensions.</h5>
+   <br>
+   <h5 style="color: #00b9ad; margin-top: -20px;">&nbsp;&nbsp;- Identify the facts.</h5>
+  </p>
+</div>
+<div>
+<img src="/star_schema.jpeg" alt="Star Schema" width="100%" style="display: block; margin: auto; margin-top:10px;"/>
+</div>
+</div>
+
+---
+class: bg-white
+
+---
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Kimball Approach</h1>
+<h4 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">💡 The combination of a fact table with several dimension tables is called the <b>star schema</b></h4>
+
+<div class="grid-container">
+<div>
+  <p style="color: #0c2749; margin-top: -4px;">
+   <h4>Four-step dimensional design process</h4>
+   <br>
+   <h5 style="color: #00b9ad; margin-top: -15px;">&nbsp;&nbsp;- Select the business process.</h5>
+   <br>
+   <h5 style="color: #00b9ad; margin-top: -20px;">&nbsp;&nbsp;- Declare the grain.</h5>
+   <br>
+   <h5 style="color: #00b9ad; margin-top: -20px;">&nbsp;&nbsp;- Identify the dimensions.</h5>
+   <br>
+   <h5 style="color: #00b9ad; margin-top: -20px;">&nbsp;&nbsp;- Identify the facts.</h5>
+  </p>
+  <p style="color: #0c2749; margin-top: 20px;">
+   <h4>Steps</h4>
+   <br>
+   <h5 style="color: #00b9ad; margin-top: -15px;">&nbsp;&nbsp;- Identify a fact.</h5>
+   <br>
+   <h5 style="color: #00b9ad; margin-top: -20px;">&nbsp;&nbsp;- Determine dimensions (attributes and descriptions around a fact).</h5>
+   <br>
+   <h5 style="color: #00b9ad; margin-top: -20px;">&nbsp;&nbsp;- Create mart - which we want our end users to interact with more (e.g. exposed via a dashboard).</h5>
+  </p>
+</div>
+<div>
+<img src="/star_schema.jpeg" alt="Star Schema" width="100%" style="display: block; margin: auto; margin-top:10px;"/>
+</div>
+</div>
+
+---
+class: bg-white
 
 ---
 
-# Star Schema (Kimball)
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Granularity</h1>
 
-<img src="/Ralph.jpg" alt="Ralph Kimball"/>
+ <div>
+  <p style="color: #00b9ad; margin-top: 25px">
+   <h3>• Most important design step is declaring the fact table grain.</h3>
+   <br>
+   <h3>• The business definition of what a single fact table record represents.</h3>
+   <br>
+   <h3>• Build it on the <b>lowest possible grain</b>, meaning it cannot be divided any further</h3>
+   <br>
+   <h3>• Once the data is aggregated, you can not disaggregate it to a finer level</h3>
+  </p>
+ </div>
+
+
+---
+class: bg-white
+
+---
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Facts Table: CampaignPerformance</h1>
+<div>
+  <h4 style="color: #0c2749; font-weight:400"></h4>
+  <div>
+    <br>
+<table border="1" style="color: #0c2749; font-weight: 300; border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>CampaignName</th>
+      <th>Impressions</th>
+      <th>Clicks</th>
+      <th>Conversions</th>
+      <th>Spend</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2023-09-10</td>
+      <td>Summer Sale</td>
+      <td>10,000</td>
+      <td>1,000</td>
+      <td>100</td>
+      <td>$500</td>
+    </tr>
+    <tr>
+      <td>2023-09-11</td>
+      <td>Fall Launch</td>
+      <td>15,000</td>
+      <td>1,500</td>
+      <td>150</td>
+      <td>$750</td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+  <p style="color: #00b9ad; margin-top: 4px;">
+   <h4></h4>
+   <br>
+   <h4 style="margin-top: 1px;">&nbsp;&nbsp;- Low granularity.</h4>
+   <br>
+   <h4 style="margin-top: 1px;">&nbsp;&nbsp;- Contains identifiers that allow you to join with dimension tables.</h4>
+   <br>
+   <h4 style="margin-top: 1px;">&nbsp;&nbsp;- Numeric Values.</h4>
+  </p>
+</div>
+
+---
+class: bg-white
+
+---
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Dimension Table: CampaignDetails</h1>
+<div>
+  <h4 style="color: #0c2749; font-weight:400"></h4>
+  <div>
+    <br>
+<table border="1" style="color: #0c2749; font-weight: 300; border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th>CampaignName</th>
+      <th>StartDate</th>
+      <th>EndDate</th>
+      <th>TargetAudience</th>
+      <th>Channel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Summer Sale</td>
+      <td>2023-09-01</td>
+      <td>2023-09-30</td>
+      <td>Ages 18-25</td>
+      <td>Facebook</td>
+    </tr>
+    <tr>
+      <td>Fall Launch</td>
+      <td>2023-09-10</td>
+      <td>2023-10-10</td>
+      <td>Ages 25-35</td>
+      <td>Email</td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+  <p style="color: #00b9ad; margin-top: 4px;">
+   <h4 style="margin-top: 15px;">&nbsp;&nbsp;- Will add context to a fact through attributes & descriptions.</h4>
+   <h4 style="margin-top: 4px;">&nbsp;&nbsp;- Can be slowly changing, e.g. office location for an employee ❓ How do you handle that?</h4>
+   <h4 style="margin-top: 4px;">&nbsp;&nbsp;- Has a single primary key column.</h4>
+   <h4 style="margin-top: 4px;">&nbsp;&nbsp;- Embedded as a foreign key in an associated fact table.</h4>
+   <h4 style="margin-top: 4px;">&nbsp;&nbsp;- Usually flat, wide denormalized tables.</h4>
+   <h4 style="margin-top: 4px;">&nbsp;&nbsp;- Need a surrogate key, as dimension values can be updated. They can be simple integers.</h4>
+  </p>
+</div>
+
+
+---
+class: bg-white
 
 ---
 
-# His family
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Kimball</h1>
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">In this simplified model:</h2>
+ <div>
+  <p style="color: #00b9ad; margin-top: 25px">
+   <h3>• The CampaignPerformance table provides <b>metrics</b> on how each campaign performed on a given date.</h3>
+   <br>
+   <h3>• The CampaignDetails table provides <b>additional context</b> about each campaign, such as its duration, target audience, and channel.</h3>
+    <br>
+   <h3>• Allows marketing teams to quickly see how each campaign is performing and understand the context behind each campaign.</h3>
+  </p>
+ </div>
 
-<img src="/kimball_group.png" alt="Kimball Group"/>
+---
+class: bg-white
 
 ---
 
-<img src="/star_schema.jpeg" alt="Star Schema"/>
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">What Are The Benefits ❓</h1>
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">In this simplified model:</h2>
+ <div>
+  <p style="color: #00b9ad; margin-top: 25px">
+   <h3>• Simple.</h3>
+   <br>
+   <h3>• Query simplicity.</h3>
+    <br>
+   <h3>• Great for analysis (focus on the BI side).</h3>
+  </p>
+ </div>
+
+---
+class: bg-white
 
 ---
 
-# Four-step dimensional design process
-1. Select the business process
-2. Declare the grain
-3. Identify the dimensions
-4. Identify the facts
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Conformed Dimensions</h1>
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">used for integrating data:</h2>
+ <div>
+  <p style="color: #00b9ad; margin-top: 25px">
+   <h3>• One dimension might be able to be joined with multiple facts table.</h3>
+   <br>
+   <h3>• Guarantees that a single data item is used in a similar manner across all the facts.</h3>
+   <br>
+   <h3>• Ensures that all departments work with the same data definitions.</h3>
+   <br>
+   <h3>• Example: 'CustomerID' means the same thing across all the different datasets.</h3>
+  </p>
+ </div>
+
+
+---
+class: bg-white
 
 ---
 
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Surrogate Key</h1>
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400"></h2>
+ <div>
+  <p style="color: #00b9ad; margin-top: 25px">
+   <h3>• Unique records for records in a dimension table.</h3>
+   <br>
+   <h3>• Data in dimension tables can change over time (slowy changing dimensions), surrogate keys provide a consistent and unchanging reference to each record.</h3>
+  </p>
+ </div>
 
-# Steps
-1. Identify a fact
-2. Determine dimensions (attributes and descriptions around a fact)
-3. Create mart - which we want our end users to interact with more 
 
-💡 The combination of a fact table with several dimension tables is called the star schema
+---
+class: bg-white
 
 ---
 
-# Facts
-
-| Date       | CampaignName | Impressions | Clicks | Conversions | Spend |
-|------------|--------------|-------------|--------|-------------|-------|
-| 2023-09-10 | Summer Sale  | 10,000      | 1,000  | 100         | $500  |
-| 2023-09-11 | Fall Launch  | 15,000      | 1,500  | 150         | $750  |
-
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Slowly Changing Dimensions</h1>
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">How do you track changes in the dimension data stored in a data warehouse?</h2>
 <br>
+<h3 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">There are different types of SCD's:</h3>
 
-- Low granularity
-- Contains identifiers that allow you to join with dimension tables
-- Numeric Values
+ <div>
+  <p style="color: #00b9ad; margin-top: 25px">
+   <h4>• Type 1: Overwrite old data with new data.</h4>
+   <br>
+   <h4>• Type 2: keep historical data by adding new records with updated info.</h4>
+   <br>
+   <h4>• Type 3: Store the original and the current values in the same record.</h4>
+  </p>
+ </div>
+
+---
+class: bg-white
 
 ---
 
-# Granularity
-- Most important design step is declaring the fact able grain
-- The business definition of what a single fact table record represents
-- Build it on the **lowest possible grain**, meaning it cannot be divided any further
-- Once the data is aggregated, you can not disaggregate it to a finer level
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Type 2</h1>
 
----
+<h3 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Example: An employee named John, with EmployeeID = 123, moves from 'Office A' to 'Office B'. Here's how you might implement this change with a SQL query.</h3>
 
-# Dimension table structure
-
-| CampaignName | StartDate  | EndDate    | TargetAudience | Channel  |
-|--------------|------------|------------|----------------|----------|
-| Summer Sale  | 2023-09-01 | 2023-09-30 | Ages 18-25     | Facebook |
-| Fall Launch  | 2023-09-10 | 2023-10-10 | Ages 25-35     | Email    |
-
-<br>
-
-- Will add context to a fact through attributes & descriptions
-- Can be slowly changing, e.g. office location for an employee ❓ How do you handle that?
-- Has a single primary key column
-- Embedded as a foreign key in an associated fact table
-- Usually flat, wide denormalized tables 
-- Need a surrogate key, as dimension values can be updated. They can be simple integers
-
----
-
-# Kimball
-
-In this simplified model:
-- The Campaign Performance table provides **metrics** on how each campaign performed on a given date.
-- The Campaign Details table provides **additional context** about each campaign, such as its duration, target audience, and channel.
-
-Allows marketing teams to quickly see how each campaign is performing and understand the context behind each campaign.
-
----
-
-# ❓ What are the benefits?
-- Simple
-- Query simplicity
-- Great for analysis (focus on the BI side)
-
----
-
-# Conformed dimensions (used for integrating data)
-- One dimension might be able to be joined with multiple facts table
-- Guarantees that a single data item is used in a similar manner across all the facts
-- Ensures that all departments work with the same data definitions
-- Example: 'Customer ID' means the same thing across all the different datasets
-
---- 
-
-# Surrogate key
-- Unique records for records in a dimension table
-- Data in dimension tables can change over time (slowy changing dimensions), surrogate keys provide a consistent and unchanging reference to each record
-
----
-
-# Slowly changing dimensions
-
-- How do you track changes in the dimension data stored in a data warehouse?
-- There are different types of SCD's:
-    - Type 1: Overwrite old data with new data
-    - Type 2: keep historical data by adding new records with updated info
-    - Type 3: Store the original and the current values in the same record
-
----
-
-# Type 2
-
-Example: An employee named John, with EmployeeID = 123, moves from 'Office A' to 'Office B'. Here's how you might implement this change with a SQL query:
-
-First, update the current record for John to set its EndDate to the current date, indicating the end of this record's validity.
+<h4 style="color: #00b9ad; margin-left: -15px; margin-top:30px; font-weight:400">First, update the current record for John to set its EndDate to the current date, indicating the end of this record's validity:</h4>
 
 ```sql
 UPDATE Employee
 SET EndDate = CURRENT_DATE
 WHERE EmployeeID = 123 AND EndDate IS NULL;
 ```
-
-Insert a new record with the updated info:
-
+<h4 style="color: #00b9ad; margin-left: -15px; margin-top:30px; font-weight:400">Insert a new record with the updated info:</h4>
 ```sql
 INSERT INTO Employee (EmployeeID, EmployeeName, OfficeLocation, StartDate, EndDate)
 VALUES (123, 'John', 'Office B', CURRENT_DATE, NULL);
 ```
 
 ---
-
-# Data Quality
-- Test for uniqueness of the primary key and the surrogate key
-- **Referential integrity**, make sure that all foreign keys in the fact table reference existing primary keys in the dimension tables
-- Range or Domain Validity
+class: bg-white
 
 ---
 
-# Junk dimensions
-- Used to handle and store miscellaneous data
-- Common attributes are "IsPromotionalSale", "IsOnlinePurchase", or "HasWarranty"
-- Do not want to place these in the facts table
-
----
-
-# Create Marts
-- Join facts & dims to create custom views/tables
-- e.g. see total orders by product, customer etc.
-- Used for reporting and analytics
-
----
-
-# Benefits
-- Common approach, well-documented & time-tested
-- Capable of handling complex scenarios
-- Provides clarity & stability to a data warehouse
-- Fast to construct, no normalization required
-- Easily to comprehened, simplifying querying and analysis
-
-# Disadvantages
-- Data isn't entirely integrated before reporting: no single source of truth
-- Redundant data can be added to tables
-
----
-
-# ❓ Which one do you choose?
-
----
-
-# Time to value ⏰
-
-**Kimball**:
-- Faster initial results due to focus on specific business needs.
-- Delivers value iteratively.
-
-**Inmon**:
-- Longer initial setup due to comprehensive EDW design.
-- Value realized when EDW is established and data marts are derived.
-
----
-
-# Complexity & Integration ⚙️
-
-**Kimball**:
-- Initial setup is simpler.
-- Complexity can arise when integrating multiple data marts.
-
-**Inmon**:
-- Initial design is complex due to enterprise-wide considerations.
-- Integration is inherent, as data marts are derived from a unified EDW.
-
----
-
-# Flexibility vs. Consistency 💪
-
-**Kimball**:
-- More flexible to departmental needs.
-- Risk of inconsistencies across data marts.
-
-**Inmon**:
-- Consistent data model across the organization.
-- Less flexibility for department-specific nuances.
-
----
-
-# Maintenance & Scalability 👩‍🔧
-
-**Kimball**:
-- Maintenance can be challenging when integrating or changing multiple data marts.
-- Scalable in terms of adding new data marts.
-
-**Inmon**:
-- Centralized maintenance at the EDW level.
-- Scalability requires changes to the central EDW, but data marts can be easily derived.
-
----
-
-# Data Vault Modeling
-Invented by Dan Linstedt (1990s) / Inspired by complex networks found in Nature
-
-### Networks Topology:
-- <span style="color:red">_**hubs**_</span> (such as persons or other objects) &#8594; Business Keys
-- <span style="color:green">_**links**_</span> between those objects &#8594; Business Processes / Relationships between business keys
-- <span style="color:yellow">_**information**_</span> that describes the context of the objects &#8594 Attributes of a business key or relationship
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Data Quality</h1>
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400"></h2>
+ <div>
+  <p style="color: #00b9ad; margin-top: 25px">
+   <h3>• Test for uniqueness of the primary key and the surrogate key.</h3>
+   <br>
+   <h3>• <b>Referential integrity</b>, make sure that all foreign keys in the fact table reference existing primary keys in the dimension tables.</h3>
+   <br>
+   <h3>• Range or Domain Validity.</h3>
+  </p>
+ </div>
 
 
 ---
+class: bg-white
 
-# Data Vault Modeling
+---
 
-Simple example
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Junk Dimensions</h1>
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400"></h2>
+ <div>
+  <p style="color: #00b9ad; margin-top: 25px">
+   <h3>• Used to handle and store miscellaneous data.</h3>
+   <br>
+   <h3>• Common attributes are "IsPromotionalSale", "IsOnlinePurchase", or "HasWarranty".</h3>
+   <br>
+   <h3>• Do not want to place these in the facts table.</h3>
+  </p>
+ </div>
 
-<img src="/Data_Vault_Example.png" alt="Extremely semplified example of Data Vault modelling"/>
 
+---
+class: bg-white
+
+---
+
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Marts</h1>
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400"></h2>
+ <div>
+  <p style="color: #00b9ad; margin-top: 25px">
+   <h3>• Join facts & dims to create custom views/tables.</h3>
+   <br>
+   <h3>• e.g. see total orders by product, customer etc.</h3>
+   <br>
+   <h3>• Used for reporting and analytics.</h3>
+  </p>
+ </div>
+
+
+---
+class: bg-white
+
+---
+
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">📈 and 📉</h1>
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Benefits</h2>
+ <div>
+  <p style="color: #00b9ad; margin-top: 25px">
+   <h3>• Common approach, well-documented & time-tested.</h3>
+   <h3>• Capable of handling complex scenarios.</h3>
+   <h3>• Provides clarity & stability to a data warehouse.</h3>
+   <h3>• Fast to build, no normalization required.</h3>
+   <h3>• Easy to comprehened, simplifies querying and analysis.</h3>
+  </p>
+ </div>
+ <h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Disadvantages</h2>
+ <div>
+  <p style="color: #00b9ad; margin-top: 25px">
+   <h3>• Data isn't entirely integrated before reporting: no single source of truth.</h3>
+   <h3>• Redundant data can be added to tables.</h3>
+  </p>
+ </div>
+
+
+---
+class: bg-white
+
+---
+
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Which One Do You Choose❓</h1>
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Time to value ⏰</h2>
+<h3 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Kimball</h3>
+ <div>
+  <p style="color: #00b9ad; margin-top:2px">
+   <h4>• Faster initial results due to focus on specific business needs.</h4>
+   <br>
+   <h4>• Delivers value iteratively.</h4>
+  </p>
+ </div>
+ <h3 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Inmon</h3>
+ <div>
+  <p style="color: #00b9ad; margin-top: 2px">
+   <h4>• Longer initial setup due to comprehensive EDW design.</h4>
+   <br>
+   <h4>• Value realized when EDW is established and data marts are derived.</h4>
+  </p>
+ </div>
+
+
+---
+class: bg-white
+
+---
+
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Which One Do You Choose❓</h1>
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Complexity & Integration ⚙️</h2>
+<h3 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Kimball</h3>
+ <div>
+  <p style="color: #00b9ad; margin-top:2px">
+   <h4>• Initial setup is simpler.</h4>
+   <br>
+   <h4>• Complexity can arise when integrating multiple data marts.</h4>
+  </p>
+ </div>
+ <h3 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Inmon</h3>
+ <div>
+  <p style="color: #00b9ad; margin-top: 2px">
+   <h4>• Initial design is complex due to enterprise-wide considerations.</h4>
+   <br>
+   <h4>• Integration is inherent, as data marts are derived from a unified EDW.</h4>
+  </p>
+ </div>
+
+
+---
+class: bg-white
+
+---
+
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Which One Do You Choose❓</h1>
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Flexibility vs. Consistency 💪</h2>
+<h3 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Kimball</h3>
+ <div>
+  <p style="color: #00b9ad; margin-top:2px">
+   <h4>• More flexible to departmental needs.</h4>
+   <br>
+   <h4>• Risk of inconsistencies across data marts.</h4>
+  </p>
+ </div>
+ <h3 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Inmon</h3>
+ <div>
+  <p style="color: #00b9ad; margin-top: 2px">
+   <h4>• Consistent data model across the organization.</h4>
+   <br>
+   <h4>• Less flexibility for department-specific nuances.</h4>
+  </p>
+ </div>
+
+
+---
+class: bg-white
+
+---
+
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Which One Do You Choose❓</h1>
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Maintenance & Scalability 👩‍🔧</h2>
+<h3 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Kimball</h3>
+ <div>
+  <p style="color: #00b9ad; margin-top:2px">
+   <h4>• Maintenance can be challenging when integrating or changing multiple data marts.</h4>
+   <br>
+   <h4>• Scalable in terms of adding new data marts.</h4>
+  </p>
+ </div>
+ <h3 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Inmon</h3>
+ <div>
+  <p style="color: #00b9ad; margin-top: 2px">
+   <h4>• Centralized maintenance at the EDW level.</h4>
+   <br>
+   <h4>• Scalability requires changes to the central EDW, but data marts can be easily derived.</h4>
+  </p>
+ </div>
+ 
+
+---
+class: bg-white
+
+---
+
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Hands On‼️</h1>
