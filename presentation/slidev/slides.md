@@ -45,8 +45,8 @@ class: bg-white
 ---
 
 # What is analytical data modeling?
-- Create a structured and organized representation of data elements and their relationships within a system
-- Serves as a blueprint for how data is collected, stored, managed, used within databases
+- Create a structured and organized representation of **data elements** and their **relationships** within a system
+- Serves as a **blueprint**  for how data is collected, stored, managed, used within databases
 - Aims to support the organization objectives in both operational and analytical environments
 
 ---
@@ -60,18 +60,31 @@ Example: Imagine a table that records sales for products in various branches of 
 | 2        | Los Angeles    | 101       | Apple       | $1           |
 | 2        | Los Angeles    | 103       | Cherry      | $2           |
 
-
 ---
 
-In the table above:
+Example: Imagine a table that records sales for products in various branches of a store 🏪:
 
+| BranchID | BranchLocation | ProductID | ProductName | ProductPrice |
+|----------|----------------|-----------|-------------|--------------|
+| 1        | New York       | 101       | Apple       | $1           |
+| 1        | New York       | 102       | Banana      | $0.5         |
+| 2        | Los Angeles    | 101       | Apple       | $1           |
+| 2        | Los Angeles    | 103       | Cherry      | $2           |
+
+In the table above ☝️
 - BranchID and ProductID together can be considered as the composite primary key.
 - BranchLocation is dependent on BranchID.
 - ProductName and ProductPrice are dependent on ProductID.
 
 ---
 
-What do the normalized tables look like?
+# 🤔 How could we model this to make the structures more clear?
+
+---
+
+# 🤔 How could we model this to make the structures more clear?
+
+We can **normalize** the tables ➡️ divide into smaller, less redundant tables
 
 
 | BranchID | BranchLocation |
@@ -100,52 +113,82 @@ What do the normalized tables look like?
 
 # Why do we model data?
 
-**Clarity and understanding:**
+### 1️⃣ Clarity and understanding:
 - Normalization simplifies the database structure. 
-- By dividing the data into three distinct tables — one for branches, one for products, and a linking table for branch-product relationships — it becomes easier to understand the relationships between different data entities.
+- It becomes easier to understand the relationships between different data entities.
 
 ---
 
-**Data Quality and Consistency:**
+# Why do we model data?
+
+### 2️⃣ Data Quality and Consistency:
 - Branch details are stored only once in the branch table, which reduces the risk of inconsistent data (e.g., having different spellings for the same branch location in multiple records).
 - Product details are similarly centralized, ensuring that any updates to a product's price or name need only be made in one place, thereby maintaining consistency across all entries that reference the product.
 
 ---
 
+# Why do we model data?
 
-- It helps with clarity and understanding
-- Data Quality and Consistency
-- Efficient Data Management (removing redundancy and improving data retrieval speeds)
-- Facilitates data integration
-- Future Scalability and Flexibility
-
----
-
-# Types of data models
-- Conceptual Data Model
-- Logical Data Model
-- Physical Data Model
+### 3️⃣ Efficient Data Management:
+- Queries related to specific entities (like all products sold at a branch or all branches selling a particular product) become faster and less complex because the data is segmented and indexed more effectively.
+- Operations like updates, inserts, and deletions are more efficient because they are localized to specific, smaller tables rather than a large, monolithic table.
 
 ---
 
+# Why do we model data?
 
-# What is a Data Warehouse?
+### 4️⃣ Facilitates Data Integration:
+- Integrating data from different sources (like merging another set of branch and product data from a different system) becomes easier because the structure dictates where and how new data fits into the existing schema.
+- It supports the use of standard interfaces for database interactions, which is crucial when combining data from disparate systems or preparing for enterprise-level data analysis
+
+---
+
+# Why do we model data?
+
+### 5️⃣ Facilitates Data Integration:
+- As the organization grows (e.g., opening new branches or expanding product lines), the database can accommodate new data without significant restructuring.
+- Adjustments to the database (like adding new attributes to entities) can be managed with minimal disruption to the existing database operations.
+
+---
+
+# 💡 Let's introduce a few more concepts
+- Data Warehouse
+- Data Mart
+- Data Lake
+
+---
+
+# Data Warehouse
 - A centralized repository to support business intelligence (BI) activities
 - Stores current and historical data from various sources
 - Optimized for query and analysis
 
 ---
 
-# In practice
-Put another SQL database on top of your production DB
+<img src="/data-warehousing.png" alt="Data Warehousing graph"/>
 
 ---
 
-# Goals?
-- Consolidation: Brings data from diverse sources into one unified view.
-- Reporting & Analysis: Supports complex queries and reporting.
-- Historical Insight: Maintains historical data for trend analysis.
-- Data Integrity: Ensures consistent, clean, and reliable data.
+# In practice
+Put another SQL database on top of your production DB (which are the data sources)
+
+E.g. a Bigquery database on top of Postgres
+
+---
+
+# 🎯 Goals?
+- **Consolidation**: Brings data from diverse sources into one unified view.
+- **Reporting & Analysis**: Supports complex queries and reporting.
+- **Historical Insight**: Maintains historical data for trend analysis.
+- **Data Integrity**: Ensures consistent, clean, and reliable data.
+
+---
+
+# 🔑 Key features
+- **Subject-Oriented**: Organized around subjects like sales, products, or customers.
+- **Integrated**: Data is consistent across all subjects.
+- **Time-Variant**: Historical data is kept for analysis over time.
+- **Non-Volatile**: Once data is in the warehouse, it doesn't change.
 
 ---
 
@@ -153,6 +196,13 @@ Put another SQL database on top of your production DB
 - A subset of the data warehouse
 - Normally related to a specific team in the business (for example marketing)
 - Only provides the data related to this business unit
+
+---
+
+# Why do we break down the warehouse like this?
+- **Performance**: Faster query performance due to reduced data volume.
+- **Agility**: Quicker to build and modify.
+- **User-Friendly**: Tailored to specific business unit needs, making it more intuitive.
 
 ---
 
@@ -168,6 +218,8 @@ Put another SQL database on top of your production DB
 
 ---
 
+# But before that...
+
 Step by step:
 - Requirements analysis: what do the stakeholders want to derive from the data? Can be very laborious if the comapny is large
 - Understand your sources: find all of the companies data. Work out what is useful and what is not
@@ -176,96 +228,27 @@ Step by step:
 ---
 
 # Inmon approach
-Bill Inmon is the big daddy of data warehousing
+Bill Inmon is the father of data warehousing
 
 ---
 
-# Focus is on a single source of truth
-A subject-oriented, integrated, time variant, non-volatile collection of data in support of management's decision-making process
+# How?
+- Normalized to the third normal form (3NF), which is the type of normalization that we saw in our first example
+- Create the data warehouse
+- Then build the marts ➡️ this is a top down approach
 
 ---
 
-# Key features
-- Subject-Oriented: Organized around subjects like sales, products, or customers.
-- Integrated: Data is consistent across all subjects.
-- Time-Variant: Historical data is kept for analysis over time.
-- Non-Volatile: Once data is in the warehouse, it doesn't change.
+<img src="/top_vs_bottom_wh.png" alt="Data Warehousing graph"/>
 
 ---
 
 # Normalized (Inmon)
-- Uses the normalized form for building entity structure, avoiding data redundancy as much as possible.
-- Advantage of this top-down approach in database design is that it is robust to business changes and contains a dimensional perspective of data across data mart
-- Querying becomes challenging as it includes numerous tables
-
-Example: Imagine a table that records sales for products in various branches of a store 🏪:
-
-| BranchID | BranchLocation | ProductID | ProductName | ProductPrice |
-|----------|----------------|-----------|-------------|--------------|
-| 1        | New York       | 101       | Apple       | $1           |
-| 1        | New York       | 102       | Banana      | $0.5         |
-| 2        | Los Angeles    | 101       | Apple       | $1           |
-| 2        | Los Angeles    | 103       | Cherry      | $2           |
-
-
----
-
-In the table above:
-
-- BranchID and ProductID together can be considered as the composite primary key.
-- BranchLocation is dependent on BranchID.
-- ProductName and ProductPrice are dependent on ProductID.
-
----
-
-What do the normalized tables look like?
-
-
-| BranchID | BranchLocation |
-|----------|----------------|
-| 1        | New York       |
-| 2        | Los Angeles    |
-
----
-
-| ProductID | ProductName | ProductPrice |
-|-----------|-------------|--------------|
-| 101       | Apple       | $1           |
-| 102       | Banana      | $0.5         |
-| 103       | Cherry      | $2           |
-
-| BranchID | ProductID |
-|----------|-----------|
-| 1        | 101       |
-| 1        | 102       |
-| 2        | 101       |
-| 2        | 103       |
-
----
-
-Now, the tables are in 3NF:
-
-- In the Branches table, BranchLocation is functionally dependent on BranchID.
-- In the Products table, both ProductName and ProductPrice are functionally dependent on ProductID.
-- The Sales table just links branches and products, with no transitive dependencies.
-
----
-
-This design ensures that product details and prices are stored in one place, reducing redundancy and the chance of anomalies. For instance, if the price of "Apple" changes, it only needs to be updated in one place in the Products table.
-
----
-
-Now, the tables are in 3NF:
-
-- In the Branches table, BranchLocation is functionally dependent on BranchID.
-- In the Products table, both ProductName and ProductPrice are functionally dependent on ProductID.
-- The Sales table just links branches and products, with no transitive dependencies.
-
-This design ensures that product details and prices are stored in one place, reducing redundancy and the chance of anomalies. For instance, if the price of "Apple" changes, it only needs to be updated in one place in the Products table.
-
----
-
-The data modelling is top down, as you start with a broad and comprehensive view of the entire organization before focusing on the specific details of individual data elements and structures.
+- Uses the normalized form for building entity structure, **avoiding data redundancy** as much as possible.
+- Single source of truth for the entire organization
+- Advantage of this top-down approach in database design is that it is **robust to business changes** and contains a dimensional perspective of data across data mart
+- Requires a more substantial upfront investment in planning and resources
+- **Querying becomes challenging** as it includes numerous tables
 
 ---
 
@@ -273,24 +256,14 @@ The data modelling is top down, as you start with a broad and comprehensive view
 
 ---
 
-
 # Four-step dimensional design process
 1. Select the business process
 2. Declare the grain
 3. Identify the dimensions
 4. Identify the facts
 
-
 ---
 
-# Dimension table structure
-- Has a single primary key column
-- Embedded as a foreign key in an associated fact table
-- Usually flat, wide denormalized tables 
-- Need a surrogate key, as dimension values can be updated. They can be simple integers
-
-
----
 
 # Steps
 1. Identify a fact
@@ -302,8 +275,17 @@ The data modelling is top down, as you start with a broad and comprehensive view
 ---
 
 # Facts
+
+
+| Date       | CampaignName | Impressions | Clicks | Conversions | Spend |
+|------------|--------------|-------------|--------|-------------|-------|
+| 2023-09-10 | Summer Sale  | 10,000      | 1,000  | 100         | $500  |
+| 2023-09-11 | Fall Launch  | 15,000      | 1,500  | 150         | $750  |
+
+<br>
+
 - Low granularity
-- Keys
+- Contains identifiers that allow you to join with dimension tables
 - Numeric Values
 
 ---
@@ -311,24 +293,37 @@ The data modelling is top down, as you start with a broad and comprehensive view
 # Granularity
 - Most important design step is declaring the fact able grain
 - The business definition of what a single fact table record represents
-- Build it on the lowest possible grain, meaning it cannot be divided any further
+- Build it on the **lowest possible grain**, meaning it cannot be divided any further
 - Once the data is aggregated, you can not disaggregate it to a finer level
----
-
-# Desiging the facts table
-- You want many identifiers in your facts table, e.g. product_id, employee_id, customers etc.
-- Allows you to join with dimension tables
 
 ---
 
-# Determine the dimensions
+# Dimension table structure
+
+| CampaignName | StartDate  | EndDate    | TargetAudience | Channel  |
+|--------------|------------|------------|----------------|----------|
+| Summer Sale  | 2023-09-01 | 2023-09-30 | Ages 18-25     | Facebook |
+| Fall Launch  | 2023-09-10 | 2023-10-10 | Ages 25-35     | Email    |
+
+<br>
+
 - Will add context to a fact through attributes & descriptions
 - Can be slowly changing, e.g. office location for an employee ❓ How do you handle that?
-- Text based values or dates
-- The primary key is embedded as a foreign key in any associated fact table
-- Usually wide, flat denormalized tables with many low-cardinality text attributes 
+- Has a single primary key column
+- Embedded as a foreign key in an associated fact table
+- Usually flat, wide denormalized tables 
+- Need a surrogate key, as dimension values can be updated. They can be simple integers
 
 ---
+
+In this simplified model:
+
+- The Campaign Performance table provides metrics on how each campaign performed on a given date.
+- The Campaign Details table provides additional context about each campaign, such as its duration, target audience, and channel.
+
+This model allows marketing teams to quickly see how each campaign is performing and understand the context behind each campaign.
+
+# ❓ What are the benefits?
 
 # Conformed dimensions
 - One dimension might be able to be joined with multiple facts table
@@ -375,23 +370,10 @@ VALUES (123, 'John', 'Office B', CURRENT_DATE, NULL);
 
 ---
 
-## How to join?
-
-💡 On the Surrogate Key 😄
-
---- 
-
 # Data Quality
 - Test for uniqueness of the primary key and the surrogate key
 - **Referential integrity**, make sure that all foreign keys in the fact table reference existing primary keys in the dimension tables
 - Range or Domain Validity
-
----
-
-# Bridge tables
-- Allows you to handle many-to-many relationships
-- E.g. products that fall in multiple categories
-
 
 ---
 
@@ -418,8 +400,6 @@ VALUES (123, 'John', 'Office B', CURRENT_DATE, NULL);
 
 # Disadvantages
 - Data isn't entirely integrated before reporting: no single source of truth
-
-Not needed anymore for storage and computational reasons
 
 ---
 
