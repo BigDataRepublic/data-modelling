@@ -78,10 +78,6 @@ In the table above ☝️
 
 # 🤔 How could we model this to make the structures more clear?
 
----
-
-# 🤔 How could we model this to make the structures more clear?
-
 We can **normalize** the tables ➡️ divide into smaller, less redundant tables
 
 
@@ -313,7 +309,7 @@ In this simplified model:
 - The Campaign Performance table provides **metrics** on how each campaign performed on a given date.
 - The Campaign Details table provides **additional context** about each campaign, such as its duration, target audience, and channel.
 
-This model allows marketing teams to quickly see how each campaign is performing and understand the context behind each campaign.
+Allows marketing teams to quickly see how each campaign is performing and understand the context behind each campaign.
 
 ---
 
