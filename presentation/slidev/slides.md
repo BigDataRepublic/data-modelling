@@ -959,3 +959,5 @@ class: bg-white
 ---
 
 <h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Hands On‼️</h1>
+<br><br>
+<a style="color: #0c2749; margin-left: -15px; font-weight:600" href="https://github.com/BigDataRepublic/data-modelling/tree/main/hands-on">https://github.com/BigDataRepublic/data-modelling/tree/main/hands-on</a>
