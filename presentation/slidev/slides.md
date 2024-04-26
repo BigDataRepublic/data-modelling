@@ -15,6 +15,22 @@ class: bg-white
 
 ---
 
+<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">What Is Data Modeling</h1>
+
+ <div>
+  <p style="color: #00b9ad">
+    <br><br>
+   <h3>• Create a structured and organized representation of <b>data elements</b> and their <b>relationships</b> within a system</h3>
+   <br><br>
+   <h3>• Aims to support the organization objectives in analytical and operational environments</h3>
+  </p>
+ </div>
+
+---
+class: bg-white
+
+---
+
 <h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Transactional vs Analytical Data Modeling</h1>
 
 <div class="grid-container">
@@ -42,21 +58,6 @@ class: bg-white
  </div>
 </div>
 
----
-class: bg-white
-
----
-
-<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">What Is Analytical Data Modeling</h1>
-
- <div>
-  <p style="color: #00b9ad">
-    <br><br>
-   <h3>• Create a structured and organized representation of <b>data elements</b> and their <b>relationships</b> within a system</h3>
-   <br><br>
-   <h3>• Aims to support the organization objectives in analytical environments</h3>
-  </p>
- </div>
 
 ---
 class: bg-white
@@ -408,27 +409,6 @@ class: bg-white
 
 ---
 
-<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">In Practice...</h1>
-<br>
-<h2 style="color: #0c2749; margin-left: -15px; font-weight:600">Put another SQL database "on top" of your production DB's (which are the data sources)</h2>
-<br>
-<h3 style="color: #00b9ad; margin-left: -15px; font-weight:600">E.g. a Bigquery database on top of Postgres</h3>
-<br>
-<h2 style="color: #0c2749; margin-left: -15px; font-weight:600">🔑 Key features</h2>
- <div>
-  <p style="color: #00b9ad">
-   <h4 style="margin-top: 15px;">• <b>Subject-Oriented</b>: Organized around subjects like sales, products, or customers.</h4>
-   <h4 style="margin-top: 5px;">• <b>Integrated</b>: Data is consistent across all subjects.</h4>
-   <h4 style="margin-top: 5px;">• <b>Time-Variant</b>: Historical data is kept for analysis over time.</h4>
-   <h4 style="margin-top: 5px;">• <b>Non-Volatile</b>: Once data is in the warehouse, it doesn't change (just keep appending).</h4>
-  </p>
- </div>
-
----
-class: bg-white
-
----
-
 <h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Data Mart</h1>
 
  <div>
@@ -581,15 +561,6 @@ class: bg-white
    <br>
    <h5 style="color: #00b9ad; margin-top: -20px;">&nbsp;&nbsp;- Identify the facts.</h5>
   </p>
-  <p style="color: #0c2749; margin-top: 20px;">
-   <h4>Steps</h4>
-   <br>
-   <h5 style="color: #00b9ad; margin-top: -15px;">&nbsp;&nbsp;- Identify a fact.</h5>
-   <br>
-   <h5 style="color: #00b9ad; margin-top: -20px;">&nbsp;&nbsp;- Determine dimensions (attributes and descriptions around a fact).</h5>
-   <br>
-   <h5 style="color: #00b9ad; margin-top: -20px;">&nbsp;&nbsp;- Create mart - which we want our end users to interact with more (e.g. exposed via a dashboard).</h5>
-  </p>
 </div>
 <div>
 <img src="/star_schema.jpeg" alt="Star Schema" width="100%" style="display: block; margin: auto; margin-top:10px;"/>
@@ -657,9 +628,6 @@ class: bg-white
 </table>
   </div>
   <p style="color: #00b9ad; margin-top: 4px;">
-   <h4></h4>
-   <br>
-   <h4 style="margin-top: 1px;">&nbsp;&nbsp;- Low granularity.</h4>
    <br>
    <h4 style="margin-top: 1px;">&nbsp;&nbsp;- Contains identifiers that allow you to join with dimension tables.</h4>
    <br>
@@ -706,7 +674,6 @@ class: bg-white
   </div>
   <p style="color: #00b9ad; margin-top: 4px;">
    <h4 style="margin-top: 15px;">&nbsp;&nbsp;- Will add context to a fact through attributes & descriptions.</h4>
-   <h4 style="margin-top: 4px;">&nbsp;&nbsp;- Can be slowly changing, e.g. office location for an employee ❓ How do you handle that?</h4>
    <h4 style="margin-top: 4px;">&nbsp;&nbsp;- Has a single primary key column.</h4>
    <h4 style="margin-top: 4px;">&nbsp;&nbsp;- Embedded as a foreign key in an associated fact table.</h4>
    <h4 style="margin-top: 4px;">&nbsp;&nbsp;- Usually flat, wide denormalized tables.</h4>
@@ -755,7 +722,7 @@ class: bg-white
 ---
 
 <h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Conformed Dimensions</h1>
-<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">used for integrating data:</h2>
+<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400">Used for integrating data:</h2>
  <div>
   <p style="color: #00b9ad; margin-top: 25px">
    <h3>• One dimension might be able to be joined with multiple facts table.</h3>
@@ -839,8 +806,6 @@ class: bg-white
    <h3>• Test for uniqueness of the primary key and the surrogate key.</h3>
    <br>
    <h3>• <b>Referential integrity</b>, make sure that all foreign keys in the fact table reference existing primary keys in the dimension tables.</h3>
-   <br>
-   <h3>• Range or Domain Validity.</h3>
   </p>
  </div>
 
@@ -859,24 +824,6 @@ class: bg-white
    <h3>• Common attributes are "IsPromotionalSale", "IsOnlinePurchase", or "HasWarranty".</h3>
    <br>
    <h3>• Do not want to place these in the facts table.</h3>
-  </p>
- </div>
-
-
----
-class: bg-white
-
----
-
-<h1 style="color: #0c2749; margin-left: -15px; font-weight:600">Marts</h1>
-<h2 style="color: #0c2749; margin-left: -15px; margin-top:30px; font-weight:400"></h2>
- <div>
-  <p style="color: #00b9ad; margin-top: 25px">
-   <h3>• Join facts & dims to create custom views/tables.</h3>
-   <br>
-   <h3>• e.g. see total orders by product, customer etc.</h3>
-   <br>
-   <h3>• Used for reporting and analytics.</h3>
   </p>
  </div>
 
