@@ -11,7 +11,7 @@ WITH _base_session_facts AS (
         AVG(sf.YearsOfExperience) AS AvgYearsOfExperience
     FROM {{ref('session_facts')}} sf
     JOIN {{ref('session_dim')}} sd
-    ON sf.SessionID = sd.SessionID
+        ON sf.SessionID = sd.SessionID
     GROUP BY sd.Subject, sd.Topic
 )
 

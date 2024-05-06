@@ -14,9 +14,9 @@ WITH base AS (
         a.Attendance,
     FROM {{ ref('session') }} s
     JOIN {{ ref('attendance') }} a
-    ON s.SessionID = a.SessionID
+        ON s.SessionID = a.SessionID
     JOIN {{ ref('consultants') }} c
-    ON a.ConsultantID = c.ConsultantID
+        ON a.ConsultantID = c.ConsultantID
 )
 
 SELECT 
@@ -29,6 +29,6 @@ SELECT
     cd.ProjectName,
 FROM base
 JOIN {{ref('session_dim')}} sd
-ON base.SessionID = sd.SessionID
+    ON base.SessionID = sd.SessionID
 JOIN {{ref('consultants_dim')}} cd
-ON base.ConsultantID = cd.ConsultantID
+    ON base.ConsultantID = cd.ConsultantID
